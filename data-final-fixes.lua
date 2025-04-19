@@ -1,4 +1,6 @@
 
+
+--[[
 local function find_intable(tbl, f, ...)
   if type(f) == "function" then
     for k, v in pairs(tbl) do
@@ -104,3 +106,5 @@ make_recipe_category("utility-science-pack", catname, machine)
 
 make_recipe_category("rocket-turret", catname, machine)
 make_recipe_category("asteroid-collector", catname, machine)
+
+]]

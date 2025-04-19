@@ -14,6 +14,50 @@ local procession_graphic_catalogue_types = require("__base__/prototypes/planet/p
 local biochamber_pictures = require("__space-age__.prototypes.entity.biochamber-pictures")
 
 
+function matter_printer_pipes()
+  return
+  {
+    north =
+    {
+      filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-N.png",
+      priority = "extra-high",
+      width = 71,
+      height = 38,
+      shift = util.by_pixel(2.25, 13.5),
+      scale = 0.5
+    },
+    east =
+    {
+      filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-E.png",
+      priority = "extra-high",
+      width = 42,
+      height = 76,
+      shift = util.by_pixel(-24.5, 1),
+      scale = 0.5
+    },
+    south =
+    {
+      filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-S.png",
+      priority = "extra-high",
+      width = 88,
+      height = 61,
+      shift = util.by_pixel(0, -31.25),
+      scale = 0.5
+    },
+    west =
+    {
+      filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-W.png",
+      priority = "extra-high",
+      width = 39,
+      height = 73,
+      shift = util.by_pixel(25.75, 1.25),
+      scale = 0.5
+    }
+  }
+end
+
+
+
 --[[
 local thinkingbrain_on_animation_layers =
 {
@@ -80,17 +124,17 @@ local anim_speed = 1/3
 
 data:extend({
   {
-    type = "assembling-machine",
+    type = "furnace",
     name = "matter_printer",
     icon = "__matter_printer__/graphics/icons/matter_printer_icon.png",
     flags = {"placeable-neutral","placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "matter_printer"},
-    crafting_categories = {"matter_printer"},
+    crafting_categories = {"cosmic_incubator"},
     fast_replaceable_group = "matter_printer",
     max_health = 700,
     corpse = "matter_printer-remnants",
     dying_explosion = "biochamber-explosion",
-    icon_draw_specification = {shift = {0, 0.1}},
+    icon_draw_specification = {shift = {0, 1.2}},
     circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
     circuit_connector = circuit_connector_definitions.create_vector
     (
@@ -106,12 +150,16 @@ data:extend({
     selection_box = {{-3.5, -3.5}, {3.5, 3.5}},
     damaged_trigger_effect = hit_effects.entity(),
     drawing_box_vertical_extension = 0.4,
-    module_slots = 4,
-    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
-    effect_receiver = { base_effect = { productivity = 0.7 }},
+    module_slots = 2,
+    allowed_effects = {"consumption", "pollution", "quality"},
+    effect_receiver = { base_effect = { }},
+    source_inventory_size = 1,
+    result_inventory_size = 20,
+    ignore_output_full = true,
+    map_color = {74, 127, 156}, --4a7f9c
     graphics_set =
     {
-      animation_progress = 0.15,
+      animation_progress = 0.30,
       --always_draw_idle_animation = false,
       states =
       {
@@ -512,7 +560,7 @@ data:extend({
         },
       },
     },
-    crafting_speed = 2,
+    crafting_speed = 1,
     --[[energy_source =
     {
       type = "burner",
@@ -526,20 +574,17 @@ data:extend({
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions_per_minute = { pollution = 2 }
+      emissions_per_minute = { pollution = 67 }
     },
-    energy_usage = "4000kW",
-    heating_energy = "100kW",
+    energy_usage = "40000kW",
+    heating_energy = "1000kW",
     
-    fluid_boxes_off_when_no_fluid_recipe = true,
-    --[[fluid_boxes =
+    --[[fluid_boxes_off_when_no_fluid_recipe = true,
+    fluid_boxes =
     {
       {
         production_type = "input",
-        pipe_picture =                 biochamber_pictures.pipe_pictures_1,
-        pipe_picture_frozen =          biochamber_pictures.pipe_pictures_1_frozen,
-        mirrored_pipe_picture =        biochamber_pictures.pipe_pictures_2,
-        mirrored_pipe_picture_frozen = biochamber_pictures.pipe_pictures_2_frozen,
+        pipe_picture = matter_printer_pipes(),
         pipe_covers = pipecoverspictures(),
         volume = 1000,
         pipe_connections =
@@ -547,33 +592,13 @@ data:extend({
           {
             flow_direction="input",
             direction = defines.direction.north,
-            position = {-1, -1}
-          }
-        }
-      },
-      {
-        production_type = "input",
-        pipe_picture =                 biochamber_pictures.pipe_pictures_2,
-        pipe_picture_frozen =          biochamber_pictures.pipe_pictures_2_frozen,
-        mirrored_pipe_picture =        biochamber_pictures.pipe_pictures_1,
-        mirrored_pipe_picture_frozen = biochamber_pictures.pipe_pictures_1_frozen,
-        pipe_covers = pipecoverspictures(),
-        volume = 1000,
-        pipe_connections =
-        {
-          {
-            flow_direction="input",
-            direction = defines.direction.north,
-            position = {1, -1}
+            position = {0, -3}
           }
         }
       },
       {
         production_type = "output",
-        pipe_picture =                 biochamber_pictures.pipe_pictures_1,
-        pipe_picture_frozen =          biochamber_pictures.pipe_pictures_1_frozen,
-        mirrored_pipe_picture =        biochamber_pictures.pipe_pictures_2,
-        mirrored_pipe_picture_frozen = biochamber_pictures.pipe_pictures_2_frozen,
+        pipe_picture = matter_printer_pipes(),
         pipe_covers = pipecoverspictures(),
         volume = 1000,
         pipe_connections =
@@ -581,27 +606,10 @@ data:extend({
           {
             flow_direction = "output",
             direction = defines.direction.south,
-            position = {1, 1}
+            position = {0, 3}
           }
         }
       },
-      {
-        production_type = "output",
-        pipe_picture =                 biochamber_pictures.pipe_pictures_2,
-        pipe_picture_frozen =          biochamber_pictures.pipe_pictures_2_frozen,
-        mirrored_pipe_picture =        biochamber_pictures.pipe_pictures_1,
-        mirrored_pipe_picture_frozen = biochamber_pictures.pipe_pictures_1_frozen,
-        pipe_covers = pipecoverspictures(),
-        volume = 1000,
-        pipe_connections =
-        {
-          {
-            flow_direction = "output",
-            direction = defines.direction.south,
-            position = {-1, 1}
-          }
-        }
-      }
     },]]
     water_reflection =
     {
