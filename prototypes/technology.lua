@@ -9,6 +9,10 @@ data:extend({
         type = "unlock-recipe",
         recipe = "matter_printer",
       },
+      {
+        type = "unlock-recipe",
+        recipe = "universe_precursor",
+      },
     },
     prerequisites = { "uranium-processing" },
     unit = {

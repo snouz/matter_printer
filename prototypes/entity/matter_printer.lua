@@ -2,16 +2,16 @@ require ("sound-util")
 require ("circuit-connector-sprites")
 require ("util")
 require ("__space-age__.prototypes.entity.circuit-network")
-require ("__space-age__.prototypes.entity.space-platform-hub-cockpit")
+--require ("__space-age__.prototypes.entity.space-platform-hub-cockpit")
 
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
 local sounds = require("__base__.prototypes.entity.sounds")
 local space_age_sounds = require ("__space-age__.prototypes.entity.sounds")
 local meld = require("meld")
 local simulations = require("__space-age__.prototypes.factoriopedia-simulations")
-local procession_graphic_catalogue_types = require("__base__/prototypes/planet/procession-graphic-catalogue-types")
+--local procession_graphic_catalogue_types = require("__base__/prototypes/planet/procession-graphic-catalogue-types")
 
-local biochamber_pictures = require("__space-age__.prototypes.entity.biochamber-pictures")
+--local biochamber_pictures = require("__space-age__.prototypes.entity.biochamber-pictures")
 
 
 function matter_printer_pipes()
@@ -574,9 +574,9 @@ data:extend({
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions_per_minute = { pollution = 67 }
+      emissions_per_minute = { pollution = 167 }
     },
-    energy_usage = "40000kW",
+    energy_usage = "50000kW",
     heating_energy = "1000kW",
     
     --[[fluid_boxes_off_when_no_fluid_recipe = true,

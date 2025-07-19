@@ -5,22 +5,22 @@ local base_results = {
   {type="item", name="carbon", amount_min = 0, amount_max = 42, probability = 0.2},
   {type="item", name="coal", amount_min = 0, amount_max = 9, probability = 0.2},
   {type="item", name="holmium-ore", amount_min = 0, amount_max = 11, probability = 0.2},
-  {type="item", name="uranium-ore", amount_min = 0, amount_max = 40, probability = 0.15},
-  {type="item", name="tungsten-ore", amount_min = 0, amount_max = 6, probability = 0.2},
+  {type="item", name="uranium-ore", amount_min = 0, amount_max = 10, probability = 0.11},
+  {type="item", name="tungsten-ore", amount_min = 0, amount_max = 6, probability = 0.1},
   {type="item", name="sulfur", amount_min = 0, amount_max = 25, probability = 0.25},
-  {type="item", name="calcite", amount_min = 0, amount_max = 6, probability = 0.17},
+  {type="item", name="calcite", amount_min = 0, amount_max = 6, probability = 0.07},
 }
 
 
 
-if mods["Moshine"] and data.raw.item["silicon"] then
+if mods["Moshine"] and data.raw.item["silicon"] and data.raw.item["neodymium"] then
   table.insert(base_results, {type="item", name="silicon", amount_min = 0, amount_max = 75, probability = 0.2})
   table.insert(base_results, {type="item", name="neodymium", amount_min = 0, amount_max = 15, probability = 0.15})
 end
 
 
 for _, planet in pairs(data.raw["planet"]) do
-  if planet.name and planet.icon and planet.name and planet.surface_properties then
+  if planet.name and planet.icon and planet.surface_properties then
 
     local surface_conditions = {}
 
@@ -36,7 +36,7 @@ for _, planet in pairs(data.raw["planet"]) do
       table.insert(surface_conditions, {property = "gravity", min = planet.surface_properties.gravity, max = planet.surface_properties.gravity })
     end
 
-    if not (surface_conditions == {}) then
+    if surface_conditions ~= {} then
       data:extend({
         {
           type = "recipe",
@@ -49,25 +49,33 @@ for _, planet in pairs(data.raw["planet"]) do
           },
           category = "cosmic_incubator",
           enabled = true,
-          energy_required = 15,
-          ingredients = {{type = "item", name = "iron-plate", amount = 5}},
+          energy_required = 20,
+          ingredients = {{type = "item", name = "universe_precursor", amount = 1}},
           results = base_results,
           surface_conditions = surface_conditions,
           allow_productivity = false,
           allow_inserter_overload = true,
           overload_multiplier = 1000,
           auto_recycle = false,
-          hidden = true,
-          --hidden_in_factoriopedia = true,
+          --hidden = true,
+          --hide_from_player_crafting = true,
+          --hidden_in_factoriopedia = false,
         },
       })
     end
   end
 end
 
+-- unique results
 
 local function add_result_to_planet(planet, item, max, prob)
   if data.raw["planet"][planet] and data.raw.item[item] and data.raw.recipe["cosmic_incubator_recipe_" .. planet] then
+     -- remove existing result from data.raw.recipe["cosmic_incubator_recipe_" .. planet].results
+    for _, result in pairs(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results) do
+      if result.name == item then
+        result = nil
+      end
+    end
     table.insert(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results, {type="item", name=item, amount_min = 0, amount_max = max, probability = prob})
   end
 end
