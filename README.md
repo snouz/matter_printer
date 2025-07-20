@@ -1,6 +1,6 @@
 # Cosmic Incubator
 
-![gif](https://i.imgur.com/vK0KM4V.gif)![frozen](https://i.imgur.com/whoFAia.png)
+![gif](https://i.imgur.com/vK0KM4V.gif)
 
 The plan is to make it part of my next planet. The Cosmic Incubator creates a miniature universe that harvest unstable and unobtainable materials. Concretely, it generates base ores, with a different recipe on each planet.
 
