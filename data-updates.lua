@@ -23,6 +23,7 @@ for _, planet in pairs(data.raw["planet"]) do
   if planet.name and planet.icon and planet.surface_properties then
 
     local surface_conditions = {}
+    local results = util.table.deepcopy(base_results)
 
     if planet.surface_properties.pressure then
       table.insert(surface_conditions, {property = "pressure", min = planet.surface_properties.pressure, max = planet.surface_properties.pressure })
@@ -51,34 +52,33 @@ for _, planet in pairs(data.raw["planet"]) do
           enabled = true,
           energy_required = 20,
           ingredients = {{type = "item", name = "universe_precursor", amount = 1}},
-          results = base_results,
+          results = results,
           surface_conditions = surface_conditions,
           allow_productivity = false,
           allow_inserter_overload = true,
           overload_multiplier = 1000,
           auto_recycle = false,
           --hidden = true,
-          --hide_from_player_crafting = true,
-          --hidden_in_factoriopedia = false,
+          hide_from_player_crafting = true,
+          hidden_in_factoriopedia = false,
         },
       })
     end
   end
 end
 
--- unique results
-
-local function add_result_to_planet(planet, item, max, prob)
-  if data.raw["planet"][planet] and data.raw.item[item] and data.raw.recipe["cosmic_incubator_recipe_" .. planet] then
-     -- remove existing result from data.raw.recipe["cosmic_incubator_recipe_" .. planet].results
+local function add_result_to_planet(planetname, item, max, prob)
+  if data.raw["planet"][planetname] and data.raw.item[item] and data.raw.recipe["cosmic_incubator_recipe_" .. planetname] then
+    -- remove existing result from data.raw.recipe["cosmic_incubator_recipe_" .. planet].results
     for _, result in pairs(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results) do
       if result.name == item then
         result = nil
       end
     end
-    table.insert(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results, {type="item", name=item, amount_min = 0, amount_max = max, probability = prob})
+    table.insert(data.raw.recipe["cosmic_incubator_recipe_" .. planetname].results, {type="item", name=item, amount_min = 0, amount_max = max, probability = prob})
   end
 end
+
 
 add_result_to_planet("fulgora", "holmium-ore", 15, 0.3)
 
