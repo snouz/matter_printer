@@ -2,9 +2,9 @@
 
 ![gif](https://i.imgur.com/vK0KM4V.gif)
 
-The plan is to make it part of my next planet. The Cosmic Incubator creates a miniature universe that harvest unstable and unobtainable materials. Concretely, it generates base ores, with a different recipe on each planet.
+The Cosmic Incubator creates a miniature universe that harvests unstable and unobtainable materials. Gameplay wise, it generates various ores, with a different set of results on each planet.
 
-This is very much a test version, and is not balanced yet.
+This is very much a test version, and is not balanced or complete yet. The plan is to make it part of my next planet.
 
 # Credits:
 The Cosmic Incubator is majorly derived from graphics by Hurricane046, contains parts from Krastorio 1

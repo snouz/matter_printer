@@ -42,11 +42,11 @@ for _, planet in pairs(data.raw["planet"]) do
         {
           type = "recipe",
           name = "cosmic_incubator_recipe_" .. planet.name,
+          localised_name = {"", {"recipe-name.cosmic_incubator_recipe"}, " (", {"space-location-name." .. planet.name}, ")"},
           icons =
           {
             { icon = "__matter_printer__/graphics/icons/galaxy.png", icon_size = 64, scale = 0.5, shift = {0,0} },
             { icon = planet.icon, icon_size = 64, scale = 0.25, shift = {8,8}},
-
           },
           category = "cosmic_incubator",
           enabled = true,
@@ -67,15 +67,15 @@ for _, planet in pairs(data.raw["planet"]) do
   end
 end
 
-local function add_result_to_planet(planetname, item, max, prob)
-  if data.raw["planet"][planetname] and data.raw.item[item] and data.raw.recipe["cosmic_incubator_recipe_" .. planetname] then
+local function add_result_to_planet(planet, item, max, prob)
+  if data.raw["planet"][planet] and data.raw.item[item] and data.raw.recipe["cosmic_incubator_recipe_" .. planet] then
     -- remove existing result from data.raw.recipe["cosmic_incubator_recipe_" .. planet].results
     for _, result in pairs(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results) do
       if result.name == item then
         result = nil
       end
     end
-    table.insert(data.raw.recipe["cosmic_incubator_recipe_" .. planetname].results, {type="item", name=item, amount_min = 0, amount_max = max, probability = prob})
+    table.insert(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results, {type="item", name=item, amount_min = 0, amount_max = max, probability = prob})
   end
 end
 
