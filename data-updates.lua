@@ -78,9 +78,9 @@ end
 local function add_result_to_planet(planet, item, max, prob)
   if data.raw["planet"][planet] and data.raw.item[item] and data.raw.recipe["cosmic_incubator_recipe_" .. planet] then
     -- remove existing result from data.raw.recipe["cosmic_incubator_recipe_" .. planet].results
-    for _, result in pairs(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results) do
+    for i, result in pairs(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results) do
       if result.name == item then
-        result = nil
+        table.remove(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results, i)
       end
     end
     if max > 0 and prob > 0 then
