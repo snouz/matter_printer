@@ -37,6 +37,14 @@ for _, planet in pairs(data.raw["planet"]) do
       table.insert(surface_conditions, {property = "gravity", min = planet.surface_properties.gravity, max = planet.surface_properties.gravity })
     end
 
+    if planet.name == "nauvis" then
+      surface_conditions = {
+        {property = "gravity", min = 10, max = 10 },
+        {property = "magnetic-field", min = 90, max = 90 },
+        {property = "pressure", min = 1000, max = 1000 }
+      }
+    end
+
     if surface_conditions ~= {} then
       data:extend({
         {
@@ -50,7 +58,7 @@ for _, planet in pairs(data.raw["planet"]) do
           },
           category = "cosmic_incubator",
           enabled = true,
-          energy_required = 20,
+          energy_required = 30,
           ingredients = {{type = "item", name = "universe_precursor", amount = 1}},
           results = results,
           surface_conditions = surface_conditions,
@@ -75,7 +83,9 @@ local function add_result_to_planet(planet, item, max, prob)
         result = nil
       end
     end
-    table.insert(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results, {type="item", name=item, amount_min = 0, amount_max = max, probability = prob})
+    if max > 0 and prob > 0 then
+      table.insert(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results, {type="item", name=item, amount_min = 0, amount_max = max, probability = prob})
+    end
   end
 end
 
@@ -91,3 +101,13 @@ add_result_to_planet("aquilo", "ice", 86, 0.5)
 
 add_result_to_planet("moshine", "neodymium", 90, 0.2)
 add_result_to_planet("moshine", "silicon", 160, 0.07)
+
+add_result_to_planet("panglia", "iron-ore", 210, 0.5)
+add_result_to_planet("panglia", "copper-ore", 193, 0.3)
+add_result_to_planet("panglia", "stone", 100, 0.25)
+add_result_to_planet("panglia", "carbon", 920, 0.01)
+add_result_to_planet("panglia", "uranium-ore", 0, 0)
+add_result_to_planet("panglia", "uranium-238", 20, 0.12)
+
+
+--log(serpent.block(data.raw.recipe.cosmic_incubator_recipe_nauvis))
