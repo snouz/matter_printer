@@ -44,6 +44,8 @@ for _, planet in pairs(data.raw["planet"]) do
         {property = "pressure", min = 1000, max = 1000 }
       }
     end
+    local orderstring = ""
+    if planet.order then orderstring = planet.order end
 
     if surface_conditions ~= {} then
       data:extend({
@@ -57,6 +59,8 @@ for _, planet in pairs(data.raw["planet"]) do
             { icon = planet.icon, icon_size = 64, scale = 0.25, shift = {8,8}},
           },
           category = "cosmic_incubator",
+          subgroup = "matter_printer_recipes",
+          order = orderstring,
           enabled = true,
           energy_required = 30,
           ingredients = {{type = "item", name = "universe_precursor", amount = 1}},

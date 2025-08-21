@@ -5,6 +5,12 @@ data:extend({
     name = "cosmic_incubator"
   },
   {
+    type = "item-subgroup",
+    name = "matter_printer_recipes",
+    group = "other",
+    order = "z"
+  },
+  {
     type = "recipe",
     name = "matter_printer",
     energy_required = 10,

@@ -150,8 +150,8 @@ data:extend({
     selection_box = {{-3.5, -3.5}, {3.5, 3.5}},
     damaged_trigger_effect = hit_effects.entity(),
     drawing_box_vertical_extension = 0.4,
-    module_slots = 2,
-    allowed_effects = {"consumption", "pollution", "quality"},
+    module_slots = 1,
+    allowed_effects = {"speed", "consumption", "pollution", "quality"},
     effect_receiver = { base_effect = { }},
     source_inventory_size = 1,
     result_inventory_size = 20,
@@ -504,57 +504,58 @@ data:extend({
 
 
     impact_category = "metal-large",
-    open_sound = {filename = "__base__/sound/open-close/roboport-open.ogg", volume = 0.5},
-    close_sound = {filename = "__base__/sound/open-close/roboport-close.ogg", volume = 0.4},
+    open_sound = {filename = "__matter_printer__/sound/zap-41.ogg", volume = 0.5},
+    close_sound = {filename = "__matter_printer__/sound/zap-38.ogg", volume = 0.5},
     working_sound =
     {
-      sound = {filename = "__matter_printer__/sound/machine_constant.wav", volume = 0.35},
+      sound = {filename = "__matter_printer__/sound/machine_constant.ogg", volume = 0.9},
       max_sounds_per_prototype = 3,
-      fade_in_ticks = 4,
-      fade_out_ticks = 20,
+      fade_in_ticks = 30,
+      fade_out_ticks = 0,
       sound_accents = {
         {
-          sound = {filename = "__matter_printer__/sound/turning_on.wav", volume = 0.2},
+          sound = {
+          filename = "__matter_printer__/sound/turning_on.ogg", volume = 1.5},
           frame = 1,
           play_for_working_visualisation = "opening"
         },
         {
-          sound = {filename = "__matter_printer__/sound/turning_off.wav", volume = 0.2},
+          sound = {filename = "__matter_printer__/sound/turning_off.ogg", volume = 1.5},
           frame = 1,
           play_for_working_visualisation = "closing"
         },
         {
-          sound = {filename = "__matter_printer__/sound/electric2.wav", volume = 0.2},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.6)},
           frame = 1,
           play_for_working_visualisation = "working"
         },
         {
-          sound = {filename = "__matter_printer__/sound/electric3.wav", volume = 0.2},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.5)},
           frame = 11,
           play_for_working_visualisation = "working"
         },
         {
-          sound = {filename = "__matter_printer__/sound/electric5.wav", volume = 0.2},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.4)},
           frame = 18,
           play_for_working_visualisation = "working"
         },
         {
-          sound = {filename = "__matter_printer__/sound/electric8.wav", volume = 0.2},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.3)},
           frame = 27,
           play_for_working_visualisation = "working"
         },
         {
-          sound = {filename = "__matter_printer__/sound/electric1.wav", volume = 0.2},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.5)},
           frame = 34,
           play_for_working_visualisation = "working"
         },
         {
-          sound = {filename = "__matter_printer__/sound/electric4.wav", volume = 0.2},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.5)},
           frame = 49,
           play_for_working_visualisation = "working"
         },
         {
-          sound = {filename = "__matter_printer__/sound/electric2.wav", volume = 0.2},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.2)},
           frame = 55,
           play_for_working_visualisation = "working"
         },
