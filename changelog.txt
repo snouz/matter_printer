@@ -1,5 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.3
+Date: 2025-09-15
+  Changes:
+    - Exposed adding/removing resources to recipes API for other mods
+---------------------------------------------------------------------------------------------------
+Version: 0.1.2
 Date: 2025-08-21
   Changes:
     - Reworked sounds
@@ -7,7 +12,7 @@ Date: 2025-08-21
     - Preparing panglia's recipe
   Bugfixes:
     - Fixed duplicate results
-    - Fixed that recipe would default to nauvis one
+    - Fixed that recipes would default to nauvis one
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.1
 Date: 2025-07-20

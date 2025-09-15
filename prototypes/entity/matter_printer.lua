@@ -484,8 +484,6 @@ data:extend({
           },
         },
       },
-
-      
       frozen_patch =
       {
         filename = "__matter_printer__/graphics/entity/matter_printer/matter_printer-frozen.png",
@@ -498,6 +496,12 @@ data:extend({
       reset_animation_when_frozen = true,
     },
 
+    perceived_performance = {
+      minimum = 0,
+      maximum = 3,
+      performance_to_activity_rate = 0.1,
+    },
+    --match_animation_speed_to_activity = false,
 
 
 

@@ -1,3 +1,25 @@
+
+
+
+
+matter_printer = {}
+
+function matter_printer.add_result_to_planet(planet, item, max, prob)
+  if data.raw["planet"][planet] and data.raw.item[item] and data.raw.recipe["cosmic_incubator_recipe_" .. planet] then
+    -- remove existing result from data.raw.recipe["cosmic_incubator_recipe_" .. planet].results
+    for i, result in pairs(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results) do
+      if result.name == item then
+        table.remove(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results, i)
+      end
+    end
+    if max > 0 and prob > 0 then
+      table.insert(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results, {type="item", name=item, amount_min = 0, amount_max = max, probability = prob})
+    end
+  end
+end
+
+
+
 local base_results = {
   {type="item", name="iron-ore", amount_min = 0, amount_max = 75, probability = 0.3},
   {type="item", name="stone", amount_min = 0, amount_max = 15, probability = 0.3},
@@ -10,7 +32,6 @@ local base_results = {
   {type="item", name="sulfur", amount_min = 0, amount_max = 25, probability = 0.25},
   {type="item", name="calcite", amount_min = 0, amount_max = 6, probability = 0.07},
 }
-
 
 
 if mods["Moshine"] and data.raw.item["silicon"] and data.raw.item["neodymium"] then
@@ -79,39 +100,23 @@ for _, planet in pairs(data.raw["planet"]) do
   end
 end
 
-local function add_result_to_planet(planet, item, max, prob)
-  if data.raw["planet"][planet] and data.raw.item[item] and data.raw.recipe["cosmic_incubator_recipe_" .. planet] then
-    -- remove existing result from data.raw.recipe["cosmic_incubator_recipe_" .. planet].results
-    for i, result in pairs(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results) do
-      if result.name == item then
-        table.remove(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results, i)
-      end
-    end
-    if max > 0 and prob > 0 then
-      table.insert(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results, {type="item", name=item, amount_min = 0, amount_max = max, probability = prob})
-    end
-  end
-end
 
 
-add_result_to_planet("fulgora", "holmium-ore", 15, 0.3)
+matter_printer.add_result_to_planet("fulgora", "holmium-ore", 15, 0.3)
 
-add_result_to_planet("gleba", "carbon", 186, 0.4)
+matter_printer.add_result_to_planet("gleba", "carbon", 186, 0.4)
 
-add_result_to_planet("vulcanus", "tungsten-ore", 186, 0.4)
+matter_printer.add_result_to_planet("vulcanus", "tungsten-ore", 186, 0.4)
 
-add_result_to_planet("aquilo", "lithium", 18, 0.4)
-add_result_to_planet("aquilo", "ice", 86, 0.5)
+matter_printer.add_result_to_planet("aquilo", "lithium", 18, 0.4)
+matter_printer.add_result_to_planet("aquilo", "ice", 86, 0.5)
 
-add_result_to_planet("moshine", "neodymium", 90, 0.2)
-add_result_to_planet("moshine", "silicon", 160, 0.07)
+matter_printer.add_result_to_planet("moshine", "neodymium", 90, 0.2)
+matter_printer.add_result_to_planet("moshine", "silicon", 160, 0.07)
 
-add_result_to_planet("panglia", "iron-ore", 210, 0.5)
-add_result_to_planet("panglia", "copper-ore", 193, 0.3)
-add_result_to_planet("panglia", "stone", 100, 0.25)
-add_result_to_planet("panglia", "carbon", 920, 0.01)
-add_result_to_planet("panglia", "uranium-ore", 0, 0)
-add_result_to_planet("panglia", "uranium-238", 20, 0.12)
-
-
---log(serpent.block(data.raw.recipe.cosmic_incubator_recipe_nauvis))
+matter_printer.add_result_to_planet("panglia", "iron-ore", 210, 0.5)
+matter_printer.add_result_to_planet("panglia", "copper-ore", 193, 0.3)
+matter_printer.add_result_to_planet("panglia", "stone", 100, 0.25)
+matter_printer.add_result_to_planet("panglia", "carbon", 920, 0.01)
+matter_printer.add_result_to_planet("panglia", "uranium-ore", 0, 0)
+matter_printer.add_result_to_planet("panglia", "uranium-238", 20, 0.12)

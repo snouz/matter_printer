@@ -26,6 +26,7 @@ data:extend({
     results = {{type = "item", name = "matter_printer", amount = 1}},
     allow_productivity = false,
     enabled = false,
+    auto_recycle = true,
   },
 
 
@@ -45,6 +46,7 @@ data:extend({
     results = {{type = "item", name = "universe_precursor", amount = 1}},
     allow_productivity = false,
     enabled = false,
+    auto_recycle = true,
   },
 
 
