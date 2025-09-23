@@ -134,7 +134,12 @@ data:extend({
     max_health = 700,
     corpse = "matter_printer-remnants",
     dying_explosion = "biochamber-explosion",
-    icon_draw_specification = {shift = {0, 1.2}},
+    icon_draw_specification = {shift = {0, -1}},
+    icons_positioning =
+    {
+      {inventory_index = defines.inventory.furnace_modules, shift = {0, 3.0}},
+      {inventory_index = defines.inventory.furnace_result, shift = {0, 1.5}, max_icons_per_row = 8, separation_multiplier = 0.9}
+    },
     circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
     circuit_connector = circuit_connector_definitions.create_vector
     (
@@ -152,14 +157,24 @@ data:extend({
     drawing_box_vertical_extension = 0.4,
     module_slots = 1,
     allowed_effects = {"speed", "consumption", "pollution", "quality"},
-    effect_receiver = { base_effect = { }},
+    effect_receiver = { base_effect = {}},
     source_inventory_size = 1,
     result_inventory_size = 20,
     ignore_output_full = true,
-    map_color = {74, 127, 156}, --4a7f9c
+    map_color = {74, 127, 156}, --4a7f9cs
+    crafting_speed = 0.1,
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input",
+      emissions_per_minute = { pollution = 167 }
+    },
+    energy_usage = "50000kW",
+    heating_energy = "1000kW",
+
     graphics_set =
     {
-      animation_progress = 0.30,
+      animation_progress = 0.25,
       --always_draw_idle_animation = false,
       states =
       {
@@ -424,7 +439,7 @@ data:extend({
                 shift = util.by_pixel(0, vert_shift),
                 scale = 0.5
               },
-              {
+              --[[{
                 filename = "__matter_printer__/graphics/entity/matter_printer/matter_printer-light-anim.png",
                 priority="high",
                 width = 512,
@@ -437,7 +452,7 @@ data:extend({
                 scale = 0.5,
                 draw_as_glow = true,
                 blend_mode = "additive",
-              },
+              },]]
               {
                 filename = "__matter_printer__/graphics/entity/matter_printer/matter_printer-shadow.png",
                 priority = "high",
@@ -461,7 +476,8 @@ data:extend({
           --effect = "flicker",
           constant_speed = true,
           draw_in_states = {"working"},
-          render_layer = "higher-object-above",
+          apply_recipe_tint = "primary",
+          render_layer = "higher-object-under",
           animation = 
           { 
             layers = {
@@ -483,6 +499,34 @@ data:extend({
             }
           },
         },
+        {
+          name = "flickerlights",
+          --fadeout = true,
+          always_draw = true,
+          constant_speed = true,
+          draw_in_states = {"working"},
+          apply_recipe_tint = "secondary",
+          render_layer = "higher-object-above",
+          animation = 
+          { 
+            layers = {
+              {
+                filename = "__matter_printer__/graphics/entity/matter_printer/matter_printer-light-anim.png",
+                priority="high",
+                width = 512,
+                height = 512,
+                frame_count = 60,
+                line_length = 8,
+                animation_speed = anim_speed,
+                run_mode = "forward",
+                shift = util.by_pixel(0, vert_shift),
+                scale = 0.5,
+                draw_as_glow = true,
+                blend_mode = "additive",
+              },
+            }
+          },
+        },
       },
       frozen_patch =
       {
@@ -495,12 +539,12 @@ data:extend({
       },
       reset_animation_when_frozen = true,
     },
-
     perceived_performance = {
-      minimum = 0,
-      maximum = 3,
+      minimum = 0.7,
+      maximum = 2,
       performance_to_activity_rate = 0.1,
     },
+
     --match_animation_speed_to_activity = false,
 
 
@@ -565,7 +609,6 @@ data:extend({
         },
       },
     },
-    crafting_speed = 1,
     --[[energy_source =
     {
       type = "burner",
@@ -575,14 +618,6 @@ data:extend({
       fuel_inventory_size = 1,
       emissions_per_minute = { pollution = 2 },
     },]]
-    energy_source =
-    {
-      type = "electric",
-      usage_priority = "secondary-input",
-      emissions_per_minute = { pollution = 167 }
-    },
-    energy_usage = "50000kW",
-    heating_energy = "1000kW",
     
     --[[fluid_boxes_off_when_no_fluid_recipe = true,
     fluid_boxes =

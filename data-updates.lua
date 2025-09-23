@@ -114,9 +114,14 @@ matter_printer.add_result_to_planet("aquilo", "ice", 86, 0.5)
 matter_printer.add_result_to_planet("moshine", "neodymium", 90, 0.2)
 matter_printer.add_result_to_planet("moshine", "silicon", 160, 0.07)
 
-matter_printer.add_result_to_planet("panglia", "iron-ore", 210, 0.5)
-matter_printer.add_result_to_planet("panglia", "copper-ore", 193, 0.3)
-matter_printer.add_result_to_planet("panglia", "stone", 100, 0.25)
-matter_printer.add_result_to_planet("panglia", "carbon", 920, 0.01)
-matter_printer.add_result_to_planet("panglia", "uranium-ore", 0, 0)
-matter_printer.add_result_to_planet("panglia", "uranium-238", 20, 0.12)
+--matter_printer.add_result_to_planet("panglia", "iron-ore", 210, 0.5)
+--matter_printer.add_result_to_planet("panglia", "copper-ore", 193, 0.3)
+--matter_printer.add_result_to_planet("panglia", "stone", 100, 0.25)
+--matter_printer.add_result_to_planet("panglia", "carbon", 920, 0.01)
+--matter_printer.add_result_to_planet("panglia", "uranium-ore", 0, 0)
+--matter_printer.add_result_to_planet("panglia", "uranium-238", 20, 0.12)
+
+
+if data.raw["recipe"]["cosmic_incubator_recipe_panglia"] then
+  data.raw["recipe"]["cosmic_incubator_recipe_panglia"] = nil
+end

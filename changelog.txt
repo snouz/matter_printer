@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 2025-09
+  Balance:
+    - Machine is 10x slower
+    - Removed Panglia recipe
+  Changes:
+    - Universe precursor name changed to Seed of mini-universe
+  Graphics:
+    - Reduced anim speed and max anim speed
+    - Fixed icon positioning
+    - Allow tinting of lights by recipes
+---------------------------------------------------------------------------------------------------
 Version: 0.1.3
 Date: 2025-09-15
   Changes:
