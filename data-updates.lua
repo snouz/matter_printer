@@ -34,14 +34,19 @@ local base_results = {
 }
 
 
-if mods["Moshine"] and data.raw.item["silicon"] and data.raw.item["neodymium"] then
-  table.insert(base_results, {type="item", name="silicon", amount_min = 0, amount_max = 75, probability = 0.2})
-  table.insert(base_results, {type="item", name="neodymium", amount_min = 0, amount_max = 15, probability = 0.15})
-end
+--if mods["Moshine"] and data.raw.item["silicon"] and data.raw.item["neodymium"] then
+--  table.insert(base_results, {type="item", name="silicon", amount_min = 0, amount_max = 75, probability = 0.2})
+--  table.insert(base_results, {type="item", name="neodymium", amount_min = 0, amount_max = 15, probability = 0.15})
+--end
 
 
 for _, planet in pairs(data.raw["planet"]) do
   if planet.name and planet.icon and planet.surface_properties then
+
+    local icosize = 64
+    if planet.icon_size then
+      icosize = planet.icon_size
+    end
 
     local surface_conditions = {}
     local results = util.table.deepcopy(base_results)
@@ -77,7 +82,7 @@ for _, planet in pairs(data.raw["planet"]) do
           icons =
           {
             { icon = "__matter_printer__/graphics/icons/galaxy.png", icon_size = 64, scale = 0.5, shift = {0,0} },
-            { icon = planet.icon, icon_size = 64, scale = 0.25, shift = {8,8}},
+            { icon = planet.icon, icon_size = icosize, scale = 0.30 * (64 / icosize), shift = {7,7}},
           },
           category = "cosmic_incubator",
           subgroup = "matter_printer_recipes",
