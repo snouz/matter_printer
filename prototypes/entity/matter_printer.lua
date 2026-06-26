@@ -137,8 +137,8 @@ data:extend({
     icon_draw_specification = {shift = {0, -1}},
     icons_positioning =
     {
-      {inventory_index = defines.inventory.furnace_modules, shift = {0, 3.0}},
-      {inventory_index = defines.inventory.furnace_result, shift = {0, 1.5}, max_icons_per_row = 8, separation_multiplier = 0.9}
+      {inventory_index = defines.inventory.crafter_modules, shift = {0, 3.0}},
+      {inventory_index = defines.inventory.crafter_output, shift = {0, 1.5}, max_icons_per_row = 8, separation_multiplier = 0.9}
     },
     circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
     circuit_connector = circuit_connector_definitions.create_vector

@@ -13,7 +13,7 @@ function matter_printer.add_result_to_planet(planet, item, max, prob)
       end
     end
     if max > 0 and prob > 0 then
-      table.insert(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results, {type="item", name=item, amount_min = 0, amount_max = max, probability = prob})
+      table.insert(data.raw.recipe["cosmic_incubator_recipe_" .. planet].results, {type="item", name=item, amount_min = 0, amount_max = max, independent_probability = prob})
     end
   end
 end
@@ -21,22 +21,22 @@ end
 
 
 local base_results = {
-  {type="item", name="iron-ore", amount_min = 0, amount_max = 75, probability = 0.3},
-  {type="item", name="stone", amount_min = 0, amount_max = 15, probability = 0.3},
-  {type="item", name="copper-ore", amount_min = 0, amount_max = 15, probability = 0.3},
-  {type="item", name="carbon", amount_min = 0, amount_max = 42, probability = 0.2},
-  {type="item", name="coal", amount_min = 0, amount_max = 9, probability = 0.2},
-  {type="item", name="holmium-ore", amount_min = 0, amount_max = 11, probability = 0.2},
-  {type="item", name="uranium-ore", amount_min = 0, amount_max = 10, probability = 0.11},
-  {type="item", name="tungsten-ore", amount_min = 0, amount_max = 6, probability = 0.1},
-  {type="item", name="sulfur", amount_min = 0, amount_max = 25, probability = 0.25},
-  {type="item", name="calcite", amount_min = 0, amount_max = 6, probability = 0.07},
+  {type="item", name="iron-ore", amount_min = 0, amount_max = 75, independent_probability = 0.3},
+  {type="item", name="stone", amount_min = 0, amount_max = 15, independent_probability = 0.3},
+  {type="item", name="copper-ore", amount_min = 0, amount_max = 15, independent_probability = 0.3},
+  {type="item", name="carbon", amount_min = 0, amount_max = 42, independent_probability = 0.2},
+  {type="item", name="coal", amount_min = 0, amount_max = 9, independent_probability = 0.2},
+  {type="item", name="holmium-ore", amount_min = 0, amount_max = 11, independent_probability = 0.2},
+  {type="item", name="uranium-ore", amount_min = 0, amount_max = 10, independent_probability = 0.11},
+  {type="item", name="tungsten-ore", amount_min = 0, amount_max = 6, independent_probability = 0.1},
+  {type="item", name="sulfur", amount_min = 0, amount_max = 25, independent_probability = 0.25},
+  {type="item", name="calcite", amount_min = 0, amount_max = 6, independent_probability = 0.07},
 }
 
 
 --if mods["Moshine"] and data.raw.item["silicon"] and data.raw.item["neodymium"] then
---  table.insert(base_results, {type="item", name="silicon", amount_min = 0, amount_max = 75, probability = 0.2})
---  table.insert(base_results, {type="item", name="neodymium", amount_min = 0, amount_max = 15, probability = 0.15})
+--  table.insert(base_results, {type="item", name="silicon", amount_min = 0, amount_max = 75, independent_probability = 0.2})
+--  table.insert(base_results, {type="item", name="neodymium", amount_min = 0, amount_max = 15, independent_probability = 0.15})
 --end
 
 
@@ -84,7 +84,7 @@ for _, planet in pairs(data.raw["planet"]) do
             { icon = "__matter_printer__/graphics/icons/galaxy.png", icon_size = 64, scale = 0.5, shift = {0,0} },
             { icon = planet.icon, icon_size = icosize, scale = 0.30 * (64 / icosize), shift = {7,7}},
           },
-          category = "cosmic_incubator",
+          categories = {"cosmic_incubator"},
           subgroup = "matter_printer_recipes",
           order = orderstring,
           enabled = true,
