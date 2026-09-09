@@ -87,7 +87,7 @@ for _, planet in pairs(data.raw["planet"]) do
           categories = {"cosmic_incubator"},
           subgroup = "matter_printer_recipes",
           order = orderstring,
-          enabled = true,
+          enabled = false,
           energy_required = 30,
           ingredients = {{type = "item", name = "universe_precursor", amount = 1}},
           results = results,
@@ -101,6 +101,13 @@ for _, planet in pairs(data.raw["planet"]) do
           hidden_in_factoriopedia = false,
         },
       })
+      if data.raw.recipe["cosmic_incubator_recipe_" .. planet.name] and planet.name ~= "panglia" then
+        if data.raw["technology"]["matter_printer-technology"] then
+          table.insert( data.raw["technology"]["matter_printer-technology"].effects, {type = "unlock-recipe", recipe = "cosmic_incubator_recipe_"..planet.name} )
+        else
+          data.raw.recipe["cosmic_incubator_recipe_" .. planet.name].enabled = true
+        end
+      end
     end
   end
 end

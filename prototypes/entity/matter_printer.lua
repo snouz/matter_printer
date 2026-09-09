@@ -552,58 +552,58 @@ data:extend({
 
 
     impact_category = "metal-large",
-    open_sound = {filename = "__matter_printer__/sound/zap-41.ogg", volume = 0.5},
-    close_sound = {filename = "__matter_printer__/sound/zap-38.ogg", volume = 0.5},
+    open_sound = {filename = "__matter_printer__/sound/zap-41.ogg", volume = 0.25},
+    close_sound = {filename = "__matter_printer__/sound/zap-38.ogg", volume = 0.25},
     working_sound =
     {
-      sound = {filename = "__matter_printer__/sound/machine_constant.ogg", volume = 0.9},
+      sound = {filename = "__matter_printer__/sound/machine_constant.ogg", volume = 0.45},
       max_sounds_per_prototype = 3,
       fade_in_ticks = 30,
       fade_out_ticks = 0,
       sound_accents = {
         {
           sound = {
-          filename = "__matter_printer__/sound/turning_on.ogg", volume = 1.5},
+          filename = "__matter_printer__/sound/turning_on.ogg", volume = 0.75},
           frame = 1,
           play_for_working_visualisation = "opening"
         },
         {
-          sound = {filename = "__matter_printer__/sound/turning_off.ogg", volume = 1.5},
+          sound = {filename = "__matter_printer__/sound/turning_off.ogg", volume = 0.75},
           frame = 1,
           play_for_working_visualisation = "closing"
         },
         {
-          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.6)},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.3)},
           frame = 1,
           play_for_working_visualisation = "working"
         },
         {
-          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.5)},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.25)},
           frame = 11,
           play_for_working_visualisation = "working"
         },
         {
-          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.4)},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.2)},
           frame = 18,
           play_for_working_visualisation = "working"
         },
         {
-          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.3)},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.15)},
           frame = 27,
           play_for_working_visualisation = "working"
         },
         {
-          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.5)},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.25)},
           frame = 34,
           play_for_working_visualisation = "working"
         },
         {
-          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.5)},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.25)},
           frame = 49,
           play_for_working_visualisation = "working"
         },
         {
-          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.2)},
+          sound = {variations = sound_variations("__matter_printer__/sound/zap", 47, 0.1)},
           frame = 55,
           play_for_working_visualisation = "working"
         },

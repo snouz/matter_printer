@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.3
+Date: 2026-09-08
+  Changes:
+    - Changed name of Cosmic incubator to Simuverse
+    - Changed name of Seed of mini universe in Simuversed
+  Gui:
+    - Planet specific recipes are unlocked by technology
+  Sounds:
+    - Divided sound volume by 2
+  Bugfixes:
+    - Fixed changelog ingame
+---------------------------------------------------------------------------------------------------
 Version: 0.2.2
 Date: 2026-06-23
   Info:
@@ -15,7 +27,7 @@ Date: 2026-06-21
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 2025-09-23
-  Balance:
+  Balancing:
     - Machine is 10x slower
     - Removed Panglia recipe
   Changes:
@@ -42,6 +54,7 @@ Date: 2025-08-21
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.1
 Date: 2025-07-20
+  Bugfixes:
     - Fixed crash
     - Fixed missing name of recipes
 ---------------------------------------------------------------------------------------------------
