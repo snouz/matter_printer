@@ -1,9 +1,9 @@
-# Simuverse
+# Cosmic Incubator
 
 ![gif](https://i.imgur.com/vK0KM4V.gif)
 
 
-The Simuverse creates a miniature universe that harvests unstable and unobtainable materials.
+The Cosmic Incubator creates a miniature universe that harvests unstable and unobtainable materials.
 Gameplay-wise, it generates various ores, with a different set of results on each planet.
 
 # Modders: change the results when used on your planet

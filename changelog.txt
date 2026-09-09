@@ -1,9 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.4
+Date: 2026-09-09
+  Changes:
+    - Changed name back to Cosmic incubator
+    - Changed name of Simuver-seed to Microcosm
+---------------------------------------------------------------------------------------------------
 Version: 0.2.3
 Date: 2026-09-08
   Changes:
     - Changed name of Cosmic incubator to Simuverse
-    - Changed name of Seed of mini universe in Simuversed
+    - Changed name of Seed of mini universe in Simuver-seed
   Gui:
     - Planet specific recipes are unlocked by technology
   Sounds:
